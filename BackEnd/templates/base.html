@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{% static 'js/jquery3.3.1.js' %}"></script>
+    <title>{% block head_title %}Kashan Holiday{% endblock head_title %}</title>
+
+{% include 'snippets/css.html' %}
+</head>
+<body>
+    <div class="container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+{% include 'snippets/js.html' %}
+</body>
+</html>
+
+<script>
+	$(document).ready(function(){
+		{% block jquery %}
+
+		{% endblock %}
+	});
+</script>
+<script src="{%static 'js/main.js' %}"></script>

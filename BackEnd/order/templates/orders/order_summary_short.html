@@ -1,0 +1,30 @@
+<p class='lead'>
+Order {% if order.order_id %}#{{ order.order_id }}{% endif %} خلاصه</p>
+
+<table class='table'>
+<tr><td>{{ order.cart.cartitem_set.count }} Item(s): <br/>{% for i in order.cart.cartitem_set.all %}
+<b>{{ i.item.get_title }}</b><br/>
+{% endfor %}</td></tr>
+<tr><td>مجموع: {{ order.cart.subtotal }}</td></tr>
+<tr><td>مالیات: {{ order.cart.tax_total }}</td></tr>
+<tr><td>جمع: {{ order.cart.total }}</td></tr>
+
+<!-- <tr><td>Shipping: {{ order.shipping_total_price }}</td></tr> -->
+<tr><td>مجموع سفارش: {{ order.order_total }}</td></tr>
+
+
+</table>
+</div>
+
+<div class='col-sm-4 col-sm-offset-4 text-center'>
+
+<p><b>Billing to</b>
+<br/>
+{{ order.billing_address.get_address }}
+<p>
+<p><b>Shipping to</b>
+<br/>
+{{ order.shipping_address.get_address }}
+</p>
+</p>
+</p></div>

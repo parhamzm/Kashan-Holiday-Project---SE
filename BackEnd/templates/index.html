@@ -1,0 +1,255 @@
+{% extends "base-main.html" %}
+{% load  staticfiles %}
+
+
+
+{% block slider %}
+<!--- Image Slider -->
+	<!-- Slider -->
+	<section class="section-slide">
+		<div class="wrap-slick1">
+			<div class="slick1">
+				<div class="item-slick1" style="background-image: url('{% static "img/1.jpg" %}');">
+					<div class="container h-full">
+						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
+								<span class="ltext-101 cl2 respon2">
+									<p>
+										بهترین تور ها
+									</p>
+								</span>
+							</div>
+
+							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
+								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+									سفری راحت و آسان
+								</h2>
+							</div>
+
+							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
+								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									رزرو
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="item-slick1" style="background-image: url('{% static "img/mosque.jpg" %}');">
+					<div class="container h-full">
+						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
+								<span class="ltext-101 cl2 respon2">
+									tourism site
+								</span>
+							</div>
+
+							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
+								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+									Kashan Holiday
+								</h2>
+							</div>
+
+							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
+								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									Reserve
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="item-slick1" style="background-image: url('{% static "img/soltan-amir-ahmad.jpg" %}');">
+					<div class="container h-full">
+						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
+								<span class="ltext-101 cl2 respon2">
+									معرفی مکان های دیدنی
+								</span>
+							</div>
+
+							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
+								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+									شهر تاریخی کاشان
+								</h2>
+							</div>
+
+							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
+								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+									رزرو
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock slider %}
+
+{% block mainpage %}
+<!--- Welcome Section -->
+<div class="container-fluid padding" align="center">
+	<div class="row welcome text-center">
+		<div class="row">
+			<div class="col-md-4">
+				<img class="img-fluid" src="{%static 'img/tourist.png' %}" alt="">
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+				<div class="col-md-12">
+					<h1 class="display-4">
+						توریسم در کاشان
+					</h1>
+					<p class="lead">
+							کاشان شهر کوچکی است و به راحتی می توان در یک روز به بیشتر جاذبه های آن دسترسی پیدا کرد؛ پس بازدید از زیبایی های آن وقت زیادی از شما نمی گیرد.
+							وجود باغ فین که نامش در میراث جهانی یونسکو است، دلیل خوبی برای سفر به کاشان به شمار می رود.
+					</p>
+				</div>
+				<div class="col-sm-4 col-md-4">
+						<i class="fa fa-bus"></i>
+						<h3>تور</h3>
+						<p class="lead">
+							سفری راحت و آسان و با اظمینان خاطر	
+						</p>
+					</div>
+					<div class="col-sm-4 col-md-4">
+						<i class="fa fa-bed"></i>
+						<h3>هتل</h3>
+						<p class="lead">
+							اقامت در بهترین هتل های شهر کاشان
+						</p>
+					</div>
+					<div class="col-sm-4 col-md-4">
+						<i class="fa fa-utensils"></i>
+						<h3>رستوران</h3>
+						<p class="lead">
+							 معرفی خوشمزه ترین غذا در با کیفیت ترین رستوران ها 
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Portfolio Grid -->
+<section class="parallex" id="portfolio">
+<div class="container port-container">
+	<div class="row">
+	{% for tour in tours %}
+	<div class="col-md-4 col-sm-6 portfolio-item">
+		<a class="portfolio-link" href="{{ tour.get_absolute_url }}">
+		<img class="img-fluid" src="{% if tour.image %}{{tour.image.url}}{%else%}{% static 'img/1.jpg' %}{%endif%}" alt="{{tour.name}}">
+		</a>
+
+		<div class="portfolio-caption">
+		<a href="{{ tour.get_absolute_url }}"><h4>{{ tour.name }}</h4></a>
+		<p>{{ tour.description |truncatewords:5|linebreaks }}</p>
+		</div>
+	</div>
+
+	{%endfor%}
+
+	</div>
+	</div>
+</div>
+</section>
+
+<hr class="my-4">
+
+<!--- Two Column Section -->
+<div class="container padding">
+	<div class="row padding">
+			<div class="col-md-6">
+					<img src="{% static "img/Camel-riding-Maranjab-Desert.jpg" %}" class="img-fluid">
+				</div>
+		<div class="col-md-5 about-us" style="direction:rtl" >
+			<h2>درباره ما</h2>
+			<br>
+			<p>
+			
+					شرکت خدمات مسافرتی و گردشگری کاشان هالیدی
+					 با هدف ارائه خدمات گردشگری اعم از انجام تورهای مسافرتی، رزرواسیون هتلها، اخذ ویزا و اجرای تورهای تخصصی طبیعت گردی و آبدرمانی توسط متخصصین صنعت جهانگردی کشور تشکیل گردید.
+			</p>
+			<br>
+			<p>
+					کاشان هالیدی افتخار دارد با تکیه بر دانش و تخصص جوانان ایرانی، به عنوان مجموعه تخصصی متشکل از فارغ التحصیلان توریسم و هتلداری حامی توسعه پایدار در صنعت توریسم بتواند تا سهم کوچکی در زمینه سازی رشد و شکوفایی فرهنگ گردشگری و جذب توریست در ایران داشته باشد.
+			</p>
+			<br>
+			<a href="{% url 'about' %}" class="btn btn-primary">بیشتر</a>
+		</div>
+	</div>
+</div>
+<hr class="my-4">
+
+<!--- HOTELS -->
+<div class="container padding">
+	<div class="row text-center">
+		<div class="col-md-12">
+			<h1 class="display-4">هتل ها</h1>
+		</div>
+		<hr>
+	</div>
+</div>
+
+<!--- Cards -->
+<div class="container padding">
+	<div class="row padding">
+		{% for hotel in hotels %}
+		<div class="col-xs-12 col-sm-6 col-md-4">
+				<div class="card">
+					<img src="{% if hotel.image%}{{hotel.image.url}}{%else%}{% static 'img/Camel-riding-Maranjab-Desert.jpg' %}{%endif%}" alt="{{hotel.name}}" class="card-img-top">
+					<div class="card-body">
+						<h4 class="card-title">{{hotel.name}}</h4>
+						<p class="card-text">{{ hotel.description|truncatewords:8|linebreaks }}</p>
+						<a href="#" class="btn btn-outline-secondary">See {{hotel.name}}</a>
+					</div>
+				</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+<!-- about -->
+<section id="about" class="py-5">
+	<div class="container-fluid parallex2">
+		<div class="container">
+		<div class="row" style="direction:rtl">
+			<div class="col-md-6 my-4" style="margin-right: 5em" >
+				<div>
+				<h1 class="text-uppercase display-3">
+					درباره کاشان
+				</h1>
+				<h2 style="font-size:1.2em">
+					
+در میان شهرهای رنگارنگ ایران عزیزمان، کاشان یکی از توریستی ترین مقاصد است که هر ساله تعداد قابل توجهی 
+از گردشگران را به سوی خود می کشاند و لحظاتی خوش را برای‌شان رقم می زند. این شهر به واسطه وجود خانه های تاریخی از شهرت خاصی برخوردار است و ویژگی های معماری خاص خود را دارد. علاوه بر این، وجود اثری جهانی همچون باغ فین،
+ بر اهمیت این شهر می افزاید و آن را در لیست مقاصد پرطرفدار قرار می دهد که حتی گردشگرانی را از آن سوی مرزها راهی ایران می کند. 
+
+				</h2>
+				<a href="https://fa.wikipedia.org/wiki/%DA%A9%D8%A7%D8%B4%D8%A7%D9%86" class="btn main-btn btn-primary my-4 text-capitalize">
+					شناخت کاشان
+				</a>
+			</div>
+			</div>
+			<div class="col-md-4 about-pictures my-4 d-none d-lg-block">
+
+			{% for  img in attractions_photo %}
+				<img src="{%if img.image%}{{img.image.url}}{%else%}{% static "img/1.jpg" %}{%endif%}" alt="{{img.name}}" class="img-{{forloop.counter}} img-thumbnail about-image" >
+
+			{% endfor %}
+			</div>
+
+		</div>
+	</div>
+	</div>
+</section>
+
+{% endblock mainpage %}
+
+
+
+
+

@@ -1,0 +1,87 @@
+{% extends "base-sec.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+
+
+
+<script>
+// {% block jquery %}
+// var clientToken = "{{ client_token }}";
+
+// braintree.setup(clientToken, "dropin", {
+//   container: "payment-form"
+// });
+
+
+
+// {% endblock %}
+</script>
+
+{% block content %}
+
+
+<div class="row isotope-grid " style="direction: rtl">
+
+{% if not user_can_continue %}
+<div class='col-sm-6'>
+<p class='lead'>به عنوان مهمان ادامه دهید</p>
+
+
+
+<form method='POST' action=''>{% csrf_token %}
+{{ form|crispy }}
+<input type='submit' class='btn btn-success' value='ورود به عنوان مهمان' />
+</form>
+
+
+</div>
+<div class='col-sm-6'>
+<p class='lead'>برای ادامه وارد شوید</p>
+<form method='POST' action="{% url 'account:login' %}"> {% csrf_token %}
+{{ login_form|crispy }}
+
+<input type='hidden' name='next' value='{{ next_url }}' />
+<input type='submit' class='btn btn-success' value='ورود' />
+</form>
+<p class='text-center'>
+
+<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "ریست پسورد" %}</a>!</p>
+<p>{% trans "Not member" %}? <a href="{% url 'account:signup' %}">{% trans "ثبت نام کنید" %}</a>!</p>
+</p>
+
+</div>
+
+{% else %}
+
+<div class='col-sm-4 col-sm-offset-4 m-5 text-right'>
+
+{% include "order/order_summary_short.html" with order=order %}
+
+
+<p>
+ <a class="btn btn-primary m-5" href='{% url "order_address" %}'>
+     تغییر دادن آدرس
+ </a>
+</p>
+<br/>
+
+<form id="checkout"  method='POST' action="{% url 'checkout_final' %}">{% csrf_token %}
+<!-- <input type='hidden' name='payment_token' value='ABC' /> -->
+<div id="payment-form"></div>
+<p><b><button class="btn btn-secondary m-5"  type='submit'>
+    ثبت سفارش
+</button></b>
+
+</p>
+</form>
+
+</div>
+
+
+
+{% endif %}
+</div>
+
+{% endblock %}

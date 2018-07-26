@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>    
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static "css/signup_style.css" %}" />
+    
+    {% comment %}
+        <script src="main.js"></script>
+    {% endcomment %}
+        
+    <!------ Include the above in your HEAD tag ---------->
+</head>
+<body>
+<body class="container-login100" style="background-image: url('{% static "img/house.jpg" %}');">
+    
+    <div class="container" >
+        
+    
+        <div class="omb_login">
+            <h3 class="omb_authTitle">Sign up</h3>
+            </div>
+    
+            <div class="row omb_row-sm-offset-3 omb_loginOr">
+                <div class="col-xs-12 col-sm-6">
+                    <hr class="omb_hrOr">
+                </div>
+            </div>
+    
+            <div class="row omb_row-sm-offset-3">
+                <div class="col-xs-12 col-sm-6">	
+                    <form class="omb_loginForm" action="" autocomplete="off" method="POST">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        {% comment %} <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" name="username" placeholder="Last Name">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" name="username" placeholder="Phone Number">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" name="username" placeholder="email address">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input  type="password" class="form-control" name="password" placeholder="Password">
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input  type="password" class="form-control" name="password" placeholder="Confrim Password">
+                        </div> {% endcomment %}
+                        <!-- <span class="help-block">Password error</span> -->
+                        <hr class="omb_hrOr">
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+
+                        
+                    </form>
+                </div>
+            </div>    	
+        </div>
+    
+    
+    
+            </div>
+</body>
+</body>
+</html>

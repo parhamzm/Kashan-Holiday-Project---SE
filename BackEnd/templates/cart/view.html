@@ -1,0 +1,122 @@
+{% extends "base-main.html" %}
+{% load staticfiles %}
+
+<script>
+    {% block jquery %}
+    $(".item-qty").change(function () {
+        // $(this).next(".btn-update").fadeIn();
+        // event.preventDefault(); //prevent to do the default action witch is to submit
+        var item = $(this).prev("input[type='hidden']").val();
+        
+        var qty = $(this).val();
+        var data = {
+            item: item,
+            qty: qty
+        };
+        // console.log(data);
+        $.ajax({
+            type: "GET",
+            url: "{% url 'cart' %}",
+            data: data,
+            success: function (data) {
+                // console.log(data);
+                $("#jquery-message").text("Added " + data.item_added + " Deleted " + data.deleted);
+                if(data.deleted){
+                    $("#item-" + item).fadeOut();
+                    $("#subtotal").text(data.subtotal);
+                    $("#taxtotal").text(data.tax_total);
+                    $("#carttotal").text(data.cart_total);
+                } else{
+                    $("#item-line-total-" + item).text(data.line_total);
+                    $("#subtotal").text(data.subtotal);
+                    $("#taxtotal").text(data.tax_total);
+                    $("#carttotal").text(data.cart_total);
+                }
+                if (data.total_items == 0){
+                    $(".table").fadeOut();
+                    // $(".main-content").text("!!!سبد خرید شما خالی است")
+                    var template = "{% include 'cart/empty_shopping_cart.html' %}"
+                    $(".main-content").html(template)
+                }
+                var message = "";
+                if (data.item_added){
+                    message = "!محصول جدید اضافه شد";
+                } else if (data.deleted){
+                    message = "!محصول از سبد خرید حذف شد";
+                } else {
+                    message = "!محصول در سبد خرید به روزرسانی شد";
+                }
+                showFlashMessage(message);
+                updateCartItemBadge();
+            },
+
+            error: function (response, error) {
+                // console.log(response);
+                // console.log(error);
+                $("#add-form").submit()
+            },
+        })
+
+    });
+    {% endblock jquery %}
+</script>
+
+{% block content %}
+<div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong></strong> سلام به همگی!!!.
+</div>
+
+<div class="row main-content">
+
+</div>
+{% if object.cartitem_set.count < 1 %}
+
+{% include "cart/empty_shopping_cart.html" %}
+
+{% else %}
+<table class="table">
+
+{% for item in object.cartitem_set.all %}
+<tr id="item-{{ item.item.id }}">
+        <td>
+            {{ item.item.get_title }}
+        </td>
+
+        <td>
+            <form action="." method="GET">
+                <input type="hidden" name="item" value="{{ item.item.id }}" />
+                <input type="number" class="item-qty" name="qty" value="{{ item.quantity }}" />
+                <input type="submit" class="btn btn-link btn-update" style="display: none;" value="Update item" />
+            </form>
+        </td>
+        <td id="item-line-total-{{ item.item.id }}">
+            {{ item.line_item_total }}
+        </td>
+        <td class="text-right"><a href="{{ item.remove }}">x</a>
+        </td>
+</tr>
+{% endfor %}
+
+    <tr>
+        <td colspan="4" class="text-left">مجموع : <span id='subtotal'>{{ object.subtotal }}</span></td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="text-left">مالیات : <span id="taxtotal">{{ object.tax_total }}</span></td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="text-left">جمع کل : <span id="carttotal">{{ object.total }}</span></td>
+    </tr>
+
+</table>
+{% endif %}
+</div>
+
+
+{% endblock content %}
+
+<script src="{% static 'cozastore/js/main.js' %}"></script>

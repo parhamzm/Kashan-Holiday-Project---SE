@@ -1,0 +1,64 @@
+
+{% extends "base-blog.html" %}
+
+{% block content %}
+<h1>KashanHoliday | {{ title }}</h1>
+<div class="col-sm-8 col-sm-offset-3">
+    <h2>{{ title }}</h2>
+    <form method='GET' action=''>
+    <input type='text' name='q' placeholder='Search posts' value='{{ request.GET.q }}'/>
+    <input type='submit' value='Search' />
+    </form>
+{% for obj in object_list %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="thumbnail">
+      {% if obj.image %}
+      <img src="{{ obj.image.url }}" class="img-responsive" width="600px" height="300px">
+      <!--<img src="..." alt="...">-->
+      {% endif %}
+      <div class="caption">
+        {% if obj.draft %}<h3>Staff only: Draft</h3>{% endif %}
+        {% if obj.publish > today %}<h3>Staff only: Future Post </h3>{% endif %}
+
+        <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>
+          {{ obj.timestamp|timesince }} ago</small></h3>
+          {% if obj.author.get_full_name %}
+          <p>Author: {{ obj.author.get_full_name }}</p>
+          {% endif %}
+        <p>{{ obj.content | linebreaks | truncatechars:120 }}</p>
+        <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+      <hr>
+  </div>
+{% endfor %}
+
+    <div class="pagination">
+    <span class="step-links">
+        {% if object_list.has_previous %}
+
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ object_list.previous_page_number }}">previous</a>
+
+            <a href="?{{ page_request_var }}=1">&laquo; first</a>
+            <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        </span>
+
+        {% if object_list.has_next %}
+
+            <a href="?page={{ object_list.next_page_number }}">next</a>
+            <a href="?page={{ object_list.paginator.num_pages }}">last &raquo;</a>
+            <a href="?{{ page_request_var }}={{ object_list.next_page_number }}">next</a>
+            <a href="?{{ page_request_var }}={{ object_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+</div>
+{% endblock content %}

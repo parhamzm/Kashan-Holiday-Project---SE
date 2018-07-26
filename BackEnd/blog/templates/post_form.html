@@ -1,0 +1,14 @@
+{% extends "base-blog.html" %}
+
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3">
+{{ block.super }}
+<h1>Holiday Form</h1>
+
+
+<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+{{ form.as_p }}
+    <input class="btn btn-dark" type="submit" value="Create Post">
+</form>
+</div>
+    {% endblock content %}

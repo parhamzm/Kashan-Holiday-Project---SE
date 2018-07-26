@@ -1,0 +1,152 @@
+.body{
+    font-family: 'Poppins', sans-serif;
+    color: #222;
+    background-color: #ffffff !important;
+}
+.image-header {
+    background-image: url(./../img/the-landscape-of-Maranjab-Desert.jpg);
+    height: 500px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;    width: 100%;
+}
+.parallex3{
+    background-image: url(./../img/The-Maranjab-Desert%u2019s-Caravanserai.jpg);
+    height: auto;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.right h1{
+    margin: 10px auto;
+    padding: 5px 0;
+    font-size: 1.2rem;
+    width: 90%;
+    background-color:  #ffcc80;
+    color:  #e68a00;
+    border: 1px solid #e68a00;
+    text-align: center;
+}
+.right{
+    margin-top: 15px;
+    background-color: rgba(210,212,220,.5);
+}
+.right input{
+    width: 75%;
+}
+.right .input-group-prepend{
+    margin-left: 36px;
+}
+.right .img-gallery{
+    width: 85%;
+    margin: 0 auto;
+}
+.right .img-gallery img{
+    height: 80px;
+}
+.right .cat{
+    border-radius: 4px;
+    padding: 3px 20px;
+    background: rgba(255, 255,255, .5);
+    margin: 5px auto;
+    width: 80%;
+}
+.right .pictures{
+    margin: 20px 0;
+}
+.right .search{
+    margin: 15px 0 5px;
+}
+
+.title-style-2 {
+
+    margin: 50px 0 50px 0;
+    font-weight: bold;
+    font-size: 24px;
+    color: #434a54;
+
+
+}
+.schedule-block {
+    display: table;
+    width: 100%;
+}
+#page-content .margin-top70 {
+    margin-top: 0px !important;
+    margin-right: 40px;
+}
+.wpb_row {
+
+    position: relative;
+
+}
+.vc_row {
+
+    margin-left: -15px;
+    margin-right: -15px;
+
+}
+
+
+.bcg {
+    background-color: #fbd790 !important;
+    border: 1px solid #e7e7e7 !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    padding-bottom: 8px !important;
+}
+.contact-list-media {
+    text-align: center;
+    overflow: visible;
+    cursor: pointer;
+}
+.contact-list-media .media-left {
+    padding: 0;
+    padding-bottom: 0px;
+    text-align: center;
+    padding-bottom: 18px;
+}
+.wpb_wrapper .contact-list-media .media-left a, .wpb_wrapper .contact-list-media .media-left .icons {
+    color: #292f32 !important;
+    background-color: #ffdd00;
+}
+
+.rounded{
+    text-align: center;
+    width:350px;
+    height: 100px;
+    margin-top: 50px;
+
+}
+.text{
+    font-size:small;
+    font-weight: bold;
+}
+.rounded-circle{
+    width: 180px;
+    height:180px;
+}
+
+
+element {
+
+    text-align: center;
+
+}
+.text-center {
+
+    text-align: center !important;
+    margin-left: 90px;
+
+}

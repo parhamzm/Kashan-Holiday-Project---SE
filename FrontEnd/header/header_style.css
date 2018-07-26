@@ -1,0 +1,32 @@
+  .navbar {
+    padding: 0px 12px;
+    height: 50px;
+  }
+  
+  .navbar-nav li {
+    padding-right: 20px;
+  }
+  
+  .nav-link {
+    font-size: 1.1em !important;
+    font-weight: 500;
+    text-shadow: 3px 3px 15px #000;
+    color: white;
+    background-color: #343A40;
+  }
+  .navbar-nav .nav-link {
+    padding-top: 2px;
+    padding-left: 10px;
+}
+  
+  .nav-link:hover {
+    color: #FFDD00;
+    border-bottom: 2px solid #FFDD00;
+  }
+  
+  .navbar-toggler {
+    padding: 0;
+    height: 100;
+    background: url(./../img/menu.svg) no-repeat;
+  }
+  
